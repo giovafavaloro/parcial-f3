@@ -5,21 +5,19 @@ import './Card.css'
 export const Card = () => {
 
 
-    const [auto, setAuto] = useState({
+  const [auto, setAuto] = useState({
       estudiante: '',
       marca: '',
       modelo: ''
       
   })
 
-
-
   const [show, setShow] = useState(false)
   const [error, setError] = useState(false)
 
   const handleSubmit = (e) => {
       e.preventDefault()
-      if(auto.marca.length >=4 && auto.modelo.length >= 2){
+      if(auto.marca.length >=3 && auto.modelo.length >= 6){
           setShow(true)
           setError(false)
       } else {
@@ -28,7 +26,7 @@ export const Card = () => {
       }
   }
 
-  console.log(auto)
+console.log(auto)
 return (
   <form className="form" onSubmit={handleSubmit}>
      <div>
@@ -47,18 +45,20 @@ return (
 
     <button>Enviar</button>
 
-      {error && <h6 className='error' >Por favor verifique que la información sea correcta</h6>}
+      {error && <h6 className='error' >Por favor chequea que la información sea correcta</h6>}
 
-      {show ? <>
-          
-          <p className='respuesta'>
+      {show ? 
 
-            <h3>Hola {auto.estudiante}!</h3>
+      <>
+      
+        <p className='respuesta'>
 
-            Marca del auto: {auto.marca} <br/>
-            Modelo del auto: {auto.modelo}
+          <h3>Hola {auto.estudiante}!</h3>
+
+          Marca del auto: {auto.marca} <br/>
+          Modelo del auto: {auto.modelo}
             
-          </p>
+        </p>
           
       </>
       : null
@@ -66,6 +66,4 @@ return (
 
   </form>
 )
-
-
 }
